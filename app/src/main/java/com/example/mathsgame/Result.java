@@ -25,19 +25,19 @@ public class Result extends AppCompatActivity {
 
         //For addition page
         Intent intent = getIntent();
-        addScore = intent.getIntExtra( "score",0);
+        addScore = intent.getIntExtra( "Score",0);
         String userAddScore = String.valueOf(addScore);
-        result.setText("Your Score: " + userAddScore  );
+        result.setText("Your Score: " + userAddScore);
 
         //For subtraction page
         Intent intentSubtract = getIntent();
-        subScore = intentSubtract.getIntExtra("sub score", 0);
+        subScore = intentSubtract.getIntExtra("subscore", 0);
         String userSubScore = String.valueOf(subScore);
         result.setText("YourScore " + userSubScore);
 
         //For Multiplication page
         Intent intentMultiply = getIntent();
-        mulScore = intentMultiply.getIntExtra("mul score", 0);
+        mulScore = intentMultiply.getIntExtra("mulscore", 0);
         String userMulScore = String.valueOf(mulScore);
         result.setText("Your Score " + userMulScore);
 

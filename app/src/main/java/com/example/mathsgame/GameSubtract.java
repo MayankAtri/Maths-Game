@@ -79,7 +79,7 @@ public class GameSubtract extends AppCompatActivity {
                 if(userLife == 0){
                     Toast.makeText(getApplicationContext(),"game Over",Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(GameSubtract.this,Result.class);
-                    intent.putExtra("sub score",userScore);
+                    intent.putExtra("subscore",userScore);
                     startActivity(intent);
                     finish();
                 }else{

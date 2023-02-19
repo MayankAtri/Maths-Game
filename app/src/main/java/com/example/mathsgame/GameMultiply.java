@@ -80,7 +80,7 @@ public class GameMultiply extends AppCompatActivity {
                 if(userLife == 0){
                     Toast.makeText(getApplicationContext(),"game Over",Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(GameMultiply.this,Result.class);
-                    intent.putExtra("mul score",userScore);
+                    intent.putExtra("mulscore",userScore);
                     startActivity(intent);
                     finish();
                 }else{
