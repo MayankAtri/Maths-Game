@@ -31,13 +31,13 @@ public class Result extends AppCompatActivity {
 
         //For subtraction page
         Intent intentSubtract = getIntent();
-        subScore = intentSubtract.getIntExtra("subscore", 0);
+        subScore = intentSubtract.getIntExtra("sub score", 0);
         String userSubScore = String.valueOf(subScore);
-        result.setText("YourScore " + userSubScore);
+        result.setText("Your Score " + userSubScore);
 
         //For Multiplication page
         Intent intentMultiply = getIntent();
-        mulScore = intentMultiply.getIntExtra("mulscore", 0);
+        mulScore = intentMultiply.getIntExtra("mul score", 0);
         String userMulScore = String.valueOf(mulScore);
         result.setText("Your Score " + userMulScore);
 

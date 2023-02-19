@@ -54,7 +54,6 @@ public class GameSubtract extends AppCompatActivity {
             public void onClick(View view) {
 
                 userAnswer = Integer.valueOf(answer.getText().toString());
-                pauseTimer();
                 if(userAnswer==realAnswer){
                     userScore = userScore + 10;
                     score.setText(userScore + "");
@@ -79,7 +78,7 @@ public class GameSubtract extends AppCompatActivity {
                 if(userLife == 0){
                     Toast.makeText(getApplicationContext(),"game Over",Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(GameSubtract.this,Result.class);
-                    intent.putExtra("subscore",userScore);
+                    intent.putExtra("sub score",userScore);
                     startActivity(intent);
                     finish();
                 }else{
@@ -133,6 +132,7 @@ public class GameSubtract extends AppCompatActivity {
     public void pauseTimer(){
         timer.cancel();
         timerRunning = false;
+
 
 
     }
