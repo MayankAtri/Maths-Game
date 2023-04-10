@@ -81,7 +81,7 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Please write your answer"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         android:textColor="@color/black" />
 
     <LinearLayout
@@ -89,17 +89,6 @@
         android:layout_height="match_parent"
         android:backgroundTint="#2E50A6"
         android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/buttonOk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="1"
-            android:backgroundTint="#2E50A6"
-            android:text="OK" />
 
         <Button
             android:id="@+id/buttonNext"

@@ -23,23 +23,17 @@ public class Result extends AppCompatActivity {
         exit = findViewById(R.id.buttonExit);
         playAgain = findViewById(R.id.buttonAgain);
 
-        //For addition page
-        Intent intent = getIntent();
-        addScore = intent.getIntExtra( "Score",0);
-        String userAddScore = String.valueOf(addScore);
-        result.setText("Your Score: " + userAddScore);
 
-        //For subtraction page
-        Intent intentSubtract = getIntent();
-        subScore = intentSubtract.getIntExtra("sub score", 0);
-        String userSubScore = String.valueOf(subScore);
-        result.setText("Your Score " + userSubScore);
-
-        //For Multiplication page
-        Intent intentMultiply = getIntent();
-        mulScore = intentMultiply.getIntExtra("mul score", 0);
-        String userMulScore = String.valueOf(mulScore);
-        result.setText("Your Score " + userMulScore);
+        if (getIntent().hasExtra("Score") ) {
+            addScore = getIntent().getIntExtra("Score", 0);
+            result.setText(String.valueOf(addScore));
+        }else if(getIntent().hasExtra("sub score")){
+            subScore = getIntent().getIntExtra("sub score", 0);
+            result.setText(String.valueOf(addScore));
+        }else if(getIntent().hasExtra("mul score")){
+            mulScore = getIntent().getIntExtra("mul score", 0);
+            result.setText(String.valueOf(addScore));
+        }
 
 
 

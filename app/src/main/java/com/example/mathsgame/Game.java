@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,35 +44,34 @@ public class Game extends AppCompatActivity {
         time = findViewById(R.id.textViewTimer);
         question = findViewById(R.id.textViewQuestion);
         answer = findViewById(R.id.editTextAnswer);
-        ok = findViewById(R.id.buttonOk);
         next = findViewById(R.id.buttonNext);
 
-        ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                userAnswer = Integer.valueOf(answer.getText().toString());
-                pauseTimer();
-                if(userAnswer==realAnswer){
-                    userScore = userScore + 10;
-                    score.setText(userScore + "");
-                    question.setText("Congratulations correct answer!");
-
-                }else{
-                    userLife = userLife - 1;
-                    life.setText("" + userLife);
-                    question.setText("Wrong Answer!");
-                }
-
-            }
-        });
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!TextUtils.isEmpty(answer.getText().toString())){
+                    userAnswer = Integer.valueOf(answer.getText().toString());
+                    pauseTimer();
+                    if(userAnswer==realAnswer){
+                        userScore = userScore + 10;
+                        score.setText(userScore + "");
+                        question.setText("Congratulations correct answer!");
+                        answer.setText("");
+
+                    }else{
+                        userLife = userLife - 1;
+                        life.setText("" + userLife);
+                        question.setText("Wrong Answer!");
+                    }
+
+                }else{
+                    answer.setError("Please Enter Your answer");
+                    Toast.makeText(Game.this, "Enter Your Ansewe First", Toast.LENGTH_SHORT).show();
+
+                }
                 answer.setText("");
                 gameContinue();
-                resetTimer();
 
                 if(userLife == 0){
                     Toast.makeText(getApplicationContext(),"Game Over",Toast.LENGTH_LONG).show();
@@ -80,19 +80,22 @@ public class Game extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }else{
-                             gameContinue();
+                    gameContinue();
 
                 }
             }
+
+
+
+
         });
         gameContinue();
 
 
-
     }
     public void gameContinue(){
-        number1 = random.nextInt(100);
-        number2 = random.nextInt(100);
+        number1 = random.nextInt(400);
+        number2 = random.nextInt(300);
         question.setText(number1 + " + " + number2);
         realAnswer = number1 + number2;
         startTimer();
@@ -113,9 +116,13 @@ public class Game extends AppCompatActivity {
                 pauseTimer();
                 resetTimer();
                 updateText();
-                userLife = userLife - 1;
                 life.setText("" +userLife);
                 question.setText("Time UP!");
+                Toast.makeText(Game.this,"Time's Up",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Game.this,Result.class);
+                intent.putExtra("Score",userScore);
+                startActivity(intent);
+                finish();
             }
         }.start();
         timerRunning = true;
